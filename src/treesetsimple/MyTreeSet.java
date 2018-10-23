@@ -135,10 +135,11 @@ public class MyTreeSet<E> implements NavigableSet<E>
     @Override
     public Iterator<E> iterator() {
         return map.navigableKeySet().iterator();
+        //return map.keySet().iterator();
     }
     @Override
     public NavigableSet<E> descendingSet() {
-        return new MyTreeSet(map.descendingMap());
+        return new MyTreeSet<>(map.descendingMap());
     }
     @Override
     public Iterator<E> descendingIterator() {
@@ -204,19 +205,19 @@ public class MyTreeSet<E> implements NavigableSet<E>
     public NavigableSet<E> tailSet(E fromElement, boolean inclusive) {
         return new MyTreeSet<>(map.tailMap(fromElement, inclusive));
     }
+    @Override
     public String toString() {
         Iterator<E> it = iterator();
-        if (! it.hasNext())
-            return "[]";
-
         StringBuilder sb = new StringBuilder();
         sb.append('[');
-        for (;;) {
+        while(it.hasNext()){
             E e = it.next();
-            sb.append(e == this ? "(this Collection)" : e);
-            if (! it.hasNext())
-                return sb.append(']').toString();
-            sb.append(',').append(' ');
-        }
+            if(it.hasNext()){
+                sb.append(e).append(',').append(' ');
+            } else {
+                sb.append(e).append(']');
+            }
+        }        
+        return sb.toString();
     }
 }
