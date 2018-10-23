@@ -8,9 +8,9 @@ public class Cuerpo {
         /*------------------------------------*/
         //test1(set);
         /*------------------------------------*/        
-        test2Ascending(set, set2);
-        
+        //test2Ascending(set, set2);        
         /*------------------------------------*/
+        test3Descending(set, set2);
     }
     private static void passToSet(java.util.Set xset){
         xset.clear();
@@ -89,13 +89,13 @@ public class Cuerpo {
     private static void test2Ascending(java.util.NavigableSet xset,java.util.NavigableSet xset2){        
         System.out.println("MyTreeSet: " + xset);
         System.out.println("TreeSet: " + xset2); 
-        System.out.println("---* Segundo Testing: probando subsets ascending---\n");
+        System.out.println("---* Segundo Testing: probando subsets ascending---\n");        
         System.out.println("--- Probando subSet MyTreeSet---");
         System.out.println("subSet [Deborah:Franco]: " + xset.subSet("Deborah", "Franco"));
         System.out.println("subSet [Franco:Tomás]: " + xset.subSet("Franco", "Tomás"));
         System.out.println("subSet [Deborah:nulo]: " + xset.subSet("Deborah", null));
         System.out.println("subSet [nulo:Tomás]: " + xset.subSet(null, "Tomás"));
-        System.out.println("subSet [nulo:nulo]: " + xset.subSet(null, null));
+        //System.out.println("subSet [nulo:nulo]: " + xset.subSet(null, null));
         System.out.println("--- Probando subSet TreeSet---");
         System.out.println("subSet [Deborah:Franco]: " + xset2.subSet("Deborah", "Franco"));
         System.out.println("subSet [Franco:Tomás]: " + xset2.subSet("Franco", "Tomás"));
@@ -104,10 +104,58 @@ public class Cuerpo {
         System.out.println("headSet [Franco]: " + xset.headSet("Franco"));
         System.out.println("headSet [Manuela]: " + xset.headSet("Manuela"));
         System.out.println("headSet [Tomás]: " + xset.headSet("Tomás"));
+        //System.out.println("headSet [nulo]: " + xset.headSet(null));
         System.out.println("--- Probando headSet TreeSet---");
         System.out.println("headSet [Deborah]: " + xset2.headSet("Deborah"));
         System.out.println("headSet [Franco]: " + xset2.headSet("Franco"));
         System.out.println("headSet [Manuela]: " + xset2.headSet("Manuela"));
         System.out.println("headSet [Tomás]: " + xset2.headSet("Tomás"));
+        System.out.println("--- Probando tailSet MyTreeSet---");
+        System.out.println("tailSet [Deborah]: " + xset.tailSet("Deborah"));
+        System.out.println("tailSet [Franco]: " + xset.tailSet("Franco"));
+        System.out.println("tailSet [Manuela]: " + xset.tailSet("Manuela"));
+        System.out.println("tailSet [Tomás]: " + xset.tailSet("Tomás"));
+        System.out.println("headSet [nulo]: " + xset.headSet(null));
+        System.out.println("--- Probando tailSet TreeSet---");
+        System.out.println("tailSet [Deborah]: " + xset2.tailSet("Deborah"));
+        System.out.println("tailSet [Franco]: " + xset2.tailSet("Franco"));
+        System.out.println("tailSet [Manuela]: " + xset2.tailSet("Manuela"));
+        System.out.println("tailSet [Tomás]: " + xset2.tailSet("Tomás"));
+    }
+    private static void test3Descending(java.util.NavigableSet xset,java.util.NavigableSet xset2){
+        System.out.println("MyTreeSet: " + xset.descendingSet());
+        System.out.println("TreeSet: " + xset2.descendingSet());
+        System.out.println("---* Segundo Testing: probando subsets descending---\n");        
+        System.out.println("--- Probando subSet MyTreeSet---");
+        System.out.println("subSet [Franco:Deborah]: " + xset.descendingSet().subSet("Franco","Deborah"));
+        System.out.println("subSet [Tomás:Franco]: " + xset.descendingSet().subSet("Tomás","Franco"));
+        System.out.println("subSet [Deborah:nulo]: " + xset.descendingSet().subSet(null,"Deborah"));
+        System.out.println("subSet [nulo:Tomás]: " + xset.descendingSet().subSet("Tomás",null));
+        //System.out.println("subSet [nulo:nulo]: " + xset.descendingSet().subSet(null, null));
+        System.out.println("--- Probando subSet TreeSet---");
+        System.out.println("subSet [Franco:Deborah]: " + xset2.descendingSet().subSet("Franco","Deborah"));
+        System.out.println("subSet [Tomás:Franco]: " + xset2.descendingSet().subSet("Tomás","Franco"));
+        System.out.println("--- Probando headSet MyTreeSet---");
+        System.out.println("headSet [Deborah]: " + xset.descendingSet().headSet("Deborah"));
+        System.out.println("headSet [Franco]: " + xset.descendingSet().headSet("Franco"));
+        System.out.println("headSet [Manuela]: " + xset.descendingSet().headSet("Manuela"));
+        System.out.println("headSet [Tomás]: " + xset.descendingSet().headSet("Tomás"));
+        //System.out.println("headSet [nulo]: " + xset.descendingSet().headSet(null));
+        System.out.println("--- Probando headSet TreeSet---");
+        System.out.println("headSet [Deborah]: " + xset2.descendingSet().headSet("Deborah"));
+        System.out.println("headSet [Franco]: " + xset2.descendingSet().headSet("Franco"));
+        System.out.println("headSet [Manuela]: " + xset2.descendingSet().headSet("Manuela"));
+        System.out.println("headSet [Tomás]: " + xset2.descendingSet().headSet("Tomás"));
+        System.out.println("--- Probando tailSet MyTreeSet---");
+        System.out.println("tailSet [Deborah]: " + xset.descendingSet().tailSet("Deborah"));
+        System.out.println("tailSet [Franco]: " + xset.descendingSet().tailSet("Franco"));
+        System.out.println("tailSet [Manuela]: " + xset.descendingSet().tailSet("Manuela"));
+        System.out.println("tailSet [Tomás]: " + xset.descendingSet().tailSet("Tomás"));
+        //System.out.println("headSet [nulo]: " + xset.descendingSet().headSet(null));
+        System.out.println("--- Probando tailSet TreeSet---");
+        System.out.println("tailSet [Deborah]: " + xset2.descendingSet().tailSet("Deborah"));
+        System.out.println("tailSet [Franco]: " + xset2.descendingSet().tailSet("Franco"));
+        System.out.println("tailSet [Manuela]: " + xset2.descendingSet().tailSet("Manuela"));
+        System.out.println("tailSet [Tomás]: " + xset2.descendingSet().tailSet("Tomás"));
     }
 }

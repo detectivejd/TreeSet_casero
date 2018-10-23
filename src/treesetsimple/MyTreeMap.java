@@ -1048,7 +1048,7 @@ public class MyTreeMap<K,V> implements NavigableMap<K, V>
      * KeySet es una clase interna que utilizamos para las iteraciones
      * (recorridos que hacemos con foreach) de las claves
     */
-    private class KeySet extends AbstractSet<K> implements NavigableSet<K> {
+    private static class KeySet<K> extends AbstractSet<K> implements NavigableSet<K> {
         // variable interna para delegar la mayoría de funcionalidades del map
         private NavigableMap<K, ?> m;
         /**
@@ -1079,7 +1079,7 @@ public class MyTreeMap<K,V> implements NavigableMap<K, V>
          */
         @Override
         public int size() {
-            return size;
+            return m.size();
         }
         /**
          * Obtiene el comparador usado para las ordenaciones. (Delega del 
@@ -1574,7 +1574,7 @@ public class MyTreeMap<K,V> implements NavigableMap<K, V>
         }                                
         @Override
         public NavigableSet<K> navigableKeySet() {
-            return m.navigableKeySet();
+            return new MyTreeMap.KeySet(this);
         }
         @Override
         public NavigableSet<K> descendingKeySet() {

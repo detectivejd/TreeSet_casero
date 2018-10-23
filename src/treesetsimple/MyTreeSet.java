@@ -135,11 +135,10 @@ public class MyTreeSet<E> implements NavigableSet<E>
     @Override
     public Iterator<E> iterator() {
         return map.navigableKeySet().iterator();
-        //return map.keySet().iterator();
     }
     @Override
     public NavigableSet<E> descendingSet() {
-        return new MyTreeSet<>(map.descendingMap());
+        return new MyTreeSet(map.descendingMap());
     }
     @Override
     public Iterator<E> descendingIterator() {
