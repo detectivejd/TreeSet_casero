@@ -6,10 +6,13 @@ public class Cuerpo {
         java.util.TreeSet<String> set2 = new java.util.TreeSet();
         passToSet(set2);
         /*------------------------------------*/
-        //test1(set);
-        /*------------------------------------*/        
-        //test2Ascending(set, set2);        
+        test1(set);
         /*------------------------------------*/
+        passToSet(set);
+        
+        test2Ascending(set, set2);        
+        /*------------------------------------*/
+        passToSet(set);
         test3Descending(set, set2);
     }
     private static void passToSet(java.util.Set xset){
@@ -87,9 +90,7 @@ public class Cuerpo {
         });
     }
     private static void test2Ascending(java.util.NavigableSet xset,java.util.NavigableSet xset2){        
-        System.out.println("MyTreeSet: " + xset);
-        System.out.println("TreeSet: " + xset2); 
-        System.out.println("---* Segundo Testing: probando subsets ascending---\n");        
+        System.out.println("\n---* Segundo Testing: probando subsets ascending---\n");        
         System.out.println("--- Probando subSet MyTreeSet---");
         System.out.println("subSet [Deborah:Franco]: " + xset.subSet("Deborah", "Franco"));
         System.out.println("subSet [Franco:Tomás]: " + xset.subSet("Franco", "Tomás"));
@@ -123,9 +124,7 @@ public class Cuerpo {
         System.out.println("tailSet [Tomás]: " + xset2.tailSet("Tomás"));
     }
     private static void test3Descending(java.util.NavigableSet xset,java.util.NavigableSet xset2){
-        System.out.println("MyTreeSet: " + xset.descendingSet());
-        System.out.println("TreeSet: " + xset2.descendingSet());
-        System.out.println("---* Segundo Testing: probando subsets descending---\n");        
+        System.out.println("\n---* Tercer Testing: probando subsets descending---\n");        
         System.out.println("--- Probando subSet MyTreeSet---");
         System.out.println("subSet [Franco:Deborah]: " + xset.descendingSet().subSet("Franco","Deborah"));
         System.out.println("subSet [Tomás:Franco]: " + xset.descendingSet().subSet("Tomás","Franco"));

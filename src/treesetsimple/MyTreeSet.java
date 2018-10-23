@@ -210,14 +210,18 @@ public class MyTreeSet<E> implements NavigableSet<E>
         Iterator<E> it = iterator();
         StringBuilder sb = new StringBuilder();
         sb.append('[');
-        while(it.hasNext()){
-            E e = it.next();
-            if(it.hasNext()){
-                sb.append(e).append(',').append(' ');
-            } else {
-                sb.append(e).append(']');
+        if(!it.hasNext()){
+            sb.append(']');
+        } else {
+            while(it.hasNext()){
+                E e = it.next();
+                if(it.hasNext()){
+                    sb.append(e).append(',').append(' ');
+                } else {
+                    sb.append(e).append(']');
+                }
             }
-        }        
+        } 
         return sb.toString();
     }
 }
