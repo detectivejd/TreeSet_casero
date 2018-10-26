@@ -32,7 +32,6 @@ public class DownTest extends Test
                     this.comprobar_que(!set.contains(null));
                 } else {
                     set.remove(c.toString());
-                    System.out.println(c.toString() + ": " + set.contains(c.toString()));
                     this.comprobar_que(!set.contains(c.toString()));
                 }                        
             }
