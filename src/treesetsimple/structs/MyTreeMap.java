@@ -102,7 +102,7 @@ public class MyTreeMap<K,V> implements NavigableMap<K, V>
      * @param key
      * @param value
      * @return V -> valor 
-     */
+     */    
     @Override
     public V put(K key, V value) {
         /* 
@@ -339,61 +339,26 @@ public class MyTreeMap<K,V> implements NavigableMap<K, V>
      * @param p 
      */
     private void deleteEntry(Entry<K,V> p) {
-        // Decrementa la cantidad de elementos en el árbol.
         size--;
-        // Creamos una nueva entrada vacía.
         Entry<K,V> tmp = new Entry();
-        /*
-            Creamos una entrada llamada y y mediante un operador ternario si 
-            la izquierda o derecha de p es nula que y tenga el valor de p de 
-            lo contrario de obtenga al siguiente de p.
-        */
-        Entry<K,V> y = (leftOf(p) == null || rightOf(p) == null) ? p : higherEntry(p.getKey());
-        /*
-            Luego creo otra entrada llamada x y mediante operador ternario
-            si la izquierda de y no es nula, x tendrá como valor la izquierda
-            de y de lo contrario otro operador ternario dentro del primero que
-            si la derecha de y no es nula que x obtenga como valor la derecha
-            de y  de lo contrario obtendrá la entrada vacía.
-        */
-        Entry<K,V> x = (leftOf(y) != null) ? leftOf(y) : (rightOf(y) != null ? rightOf(y) : tmp);        
-        // Al pariente de x se le asignará como valor el pariente de y
-        x.parent = parentOf(y);
-        /*
-            Sí el pariente de y es nulo, la raíz del árbol se le asignará como
-            valor mediante operador ternario que si x es una entrada vacía
-            la raíz será nula de lo contrario x será el valor de la raíz
-        */
-        if (parentOf(y) == null) {
-            root = (x == tmp ? null : x);
-        } else {
-            /*
-                Ahora si el pariente de y no es nulo, entramos en otra
-                condición que si y es igual al izquierdo del pariente de y
-                el izquierdo del pariente de y tendrá como valor mediente
-                operador ternario si x es una entrada vacía será nulo sino
-                su valor será x
-            */
-            if (y == leftOf(parentOf(y))) {
+    	Entry<K,V> y = (leftOf(p) == null) || (rightOf(p) == null) ? p : higherEntry(p.getKey());
+        Entry<K,V> x = (leftOf(y) != null) ? leftOf(y) : (rightOf(y) == null ? tmp : rightOf(y));
+    	x.parent = y.parent;
+    	if (parentOf(y) == null)
+    	    root = (x == tmp) ? null : x;
+    	else {
+    	    if (y == leftOf(parentOf(y))) {
                 y.parent.left = (x == tmp) ? null : x;
             } else {
-                /*
-                    De lo contrario el derecho del pariente de y tendrá como
-                    valor por operador ternario si x es una entrada vacía
-                    su valor será nulo sino será x
-                */
                 y.parent.right = (x == tmp) ? null : x; 
             }
-        }
-        // Si y es distinto de p, a p se le asignará como valor y
-        if (y != p){
-            p = y;
-        }
-        /*  Y si el color de y es negro, el árbol será balanceado para 
-            actualizarse luego de la eliminación
-        */
-        if (colorOf(y) == BLACK) {
-            fixDown(x);
+    	}
+    	if (y != p) {
+    	    p.key = y.key;
+    	    p.value = y.value;
+    	}
+    	if (y.color == BLACK) {
+    	    fixDown(x);
         }
     }
     /**

@@ -19,7 +19,7 @@ public class IntersectionTest extends Test
             MyTreeSet<String>s2 = new MyTreeSet();
             s2.add("Deborah");
             s1.retainAll(s2);
-            this.comprobar_que(s1.size() == 2);
+            this.comprobar_que(s1.size() == 1);
         }
         private void probando_interseccion_S1_vacia() throws Exception {
             MyTreeSet<String>s1 = new MyTreeSet();
